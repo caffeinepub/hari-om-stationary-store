@@ -1,0 +1,178 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ====================================================
+   FONT FACES - Bricolage Grotesque (Display) + Outfit (Body)
+   ==================================================== */
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque[opsz,wdth,wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("/assets/fonts/Outfit[wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 1rem;
+
+    /* === Hari Om Palette ===
+       Primary: Vibrant Blue (festive, trustworthy)
+       Accent-orange: Warm Indian orange
+       Accent-yellow: Sunny yellow
+       Neutral: Off-white & warm grey
+    */
+
+    /* Base surfaces */
+    --background: 0.98 0.005 90;          /* warm off-white */
+    --foreground: 0.18 0.02 260;          /* deep navy text */
+    --card: 1 0 0;                         /* pure white cards */
+    --card-foreground: 0.18 0.02 260;
+    --popover: 1 0 0;
+    --popover-foreground: 0.18 0.02 260;
+
+    /* Primary: Vibrant blue */
+    --primary: 0.52 0.22 258;
+    --primary-foreground: 1 0 0;
+
+    /* Secondary: Warm orange */
+    --secondary: 0.7 0.19 48;
+    --secondary-foreground: 0.1 0.02 30;
+
+    /* Muted */
+    --muted: 0.94 0.01 90;
+    --muted-foreground: 0.5 0.02 260;
+
+    /* Accent: Yellow */
+    --accent: 0.88 0.18 90;
+    --accent-foreground: 0.15 0.04 60;
+
+    /* Destructive */
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    /* Border & inputs */
+    --border: 0.88 0.01 90;
+    --input: 0.88 0.01 90;
+    --ring: 0.52 0.22 258;
+
+    /* Chart palette */
+    --chart-1: 0.52 0.22 258;
+    --chart-2: 0.7 0.19 48;
+    --chart-3: 0.88 0.18 90;
+    --chart-4: 0.65 0.2 160;
+    --chart-5: 0.7 0.22 30;
+
+    /* Sidebar */
+    --sidebar: 0.98 0.005 90;
+    --sidebar-foreground: 0.18 0.02 260;
+    --sidebar-primary: 0.52 0.22 258;
+    --sidebar-primary-foreground: 1 0 0;
+    --sidebar-accent: 0.94 0.01 90;
+    --sidebar-accent-foreground: 0.18 0.02 260;
+    --sidebar-border: 0.88 0.01 90;
+    --sidebar-ring: 0.52 0.22 258;
+
+    /* Custom tokens */
+    --shop-blue: 0.52 0.22 258;
+    --shop-orange: 0.7 0.19 48;
+    --shop-yellow: 0.88 0.18 90;
+    --shop-blue-light: 0.93 0.05 258;
+    --shop-orange-light: 0.95 0.06 48;
+  }
+
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Outfit", sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Bricolage Grotesque", sans-serif;
+  }
+}
+
+/* Smooth scroll with offset for sticky nav */
+section[id] {
+  scroll-margin-top: 72px;
+}
+
+/* Hero gradient overlay */
+.hero-overlay {
+  background: linear-gradient(
+    135deg,
+    oklch(0.18 0.14 258 / 0.85) 0%,
+    oklch(0.25 0.1 258 / 0.6) 50%,
+    oklch(0.7 0.19 48 / 0.5) 100%
+  );
+}
+
+/* Decorative pattern background */
+.pattern-bg {
+  background-image: radial-gradient(oklch(0.52 0.22 258 / 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Section divider wave */
+.wave-divider {
+  position: relative;
+}
+
+/* Card hover effect */
+.product-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px oklch(0.52 0.22 258 / 0.15);
+}
+
+/* Star rating */
+.star-filled {
+  color: oklch(var(--shop-yellow));
+}
+.star-empty {
+  color: oklch(0.85 0.01 90);
+}
+
+/* Mobile nav animation */
+.mobile-nav-enter {
+  animation: slideDown 0.25s ease forwards;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* WhatsApp green */
+.whatsapp-btn {
+  background-color: oklch(0.57 0.18 154);
+  color: white;
+}
+.whatsapp-btn:hover {
+  background-color: oklch(0.5 0.18 154);
+}
